@@ -11,17 +11,26 @@ const winCombos = [
 	[0, 4, 8],
 	[6, 4, 2]
 ]
-
+var flag=0;
 const cells = document.querySelectorAll('.cell');
 startGame();
 
 function startGame() {
+	flag=0;
 	document.querySelector(".endgame").style.display = "none";
 	origBoard = Array.from(Array(9).keys());
 	for (var i = 0; i < cells.length; i++) {
 		cells[i].innerText = '';
 		cells[i].style.removeProperty('background-color');
 		cells[i].addEventListener('click', turnClick, false);
+	}
+	
+}
+
+function startAI(){
+	if(flag==0){
+	turn(Math.floor(Math.random()*10), aiPlayer)
+	flag=1;
 	}
 }
 
