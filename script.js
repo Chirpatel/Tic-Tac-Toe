@@ -38,13 +38,14 @@ function turnClick(square) {
 	flag=1;
 	if (typeof origBoard[square.target.id] == 'number') {
 		turn(square.target.id, huPlayer)
-		if (!checkWin(origBoard, huPlayer) && !checkTie()) turn(bestSpot(), aiPlayer);
-		checkTie()
+		setTimeout(function() {  if (!checkWin(origBoard, huPlayer) && !checkTie()) turn(bestSpot(), aiPlayer);
+			checkTie();},300);
 	}
 }
 
 function turn(squareId, player) {
 	origBoard[squareId] = player;
+	
 	document.getElementById(squareId).innerText = player;
 	let gameWon = checkWin(origBoard, player)
 	if (gameWon) gameOver(gameWon)
