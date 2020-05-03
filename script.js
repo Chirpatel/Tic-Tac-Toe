@@ -35,9 +35,11 @@ function startAI(){
 }
 
 function turnClick(square) {
+	flag=1;
 	if (typeof origBoard[square.target.id] == 'number') {
 		turn(square.target.id, huPlayer)
 		if (!checkWin(origBoard, huPlayer) && !checkTie()) turn(bestSpot(), aiPlayer);
+		checkTie()
 	}
 }
 
@@ -75,6 +77,7 @@ function gameOver(gameWon) {
 function declareWinner(who) {
 	document.querySelector(".endgame").style.display = "block";
 	document.querySelector(".endgame .text").innerText = who;
+	
 }
 
 function emptySquares() {
