@@ -1,4 +1,4 @@
 # Tic-Tac-Toe
 Using HTML, CSS, Javascript
 
-[Game](https://chir.tech/Tic-Tac-Toe)
+[Game](https://Chirpatel.github.io/Tic-Tac-Toe)
