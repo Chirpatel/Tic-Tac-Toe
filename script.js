@@ -15,7 +15,7 @@ var flag=0;
 const cells = document.querySelectorAll('.cell');
 startGame();
 
-function startGame() {
+ function startGame() {
 	flag=0;
 	document.querySelector(".endgame").style.display = "none";
 	origBoard = Array.from(Array(9).keys());
@@ -33,13 +33,15 @@ function startAI(){
 	flag=1;
 	}
 }
-
-function turnClick(square) {
+var flag1=0;
+async function turnClick(square) {
 	flag=1;
-	if (typeof origBoard[square.target.id] == 'number') {
-		turn(square.target.id, huPlayer)
+	if (typeof origBoard[square.target.id] == 'number' && flag1==0) {
+		turn(square.target.id, huPlayer);
+		flag1=1;
 		setTimeout(function() {  if (!checkWin(origBoard, huPlayer) && !checkTie()) turn(bestSpot(), aiPlayer);
-			checkTie();},300);
+			checkTie();flag1=0;},300);
+
 	}
 }
 
@@ -63,6 +65,8 @@ function checkWin(board, player) {
 	}
 	return gameWon;
 }
+
+
 
 function gameOver(gameWon) {
 	for (let index of winCombos[gameWon.index]) {
